@@ -8,7 +8,7 @@ describe('Test Contact Us form via Automation Test Store', () => {
 
     it('Should be able to submit a successful submissionvia contact us form', () => {
         cy.visit('https://automationteststore.com/');
-        cy.get("a[href$='contact']555").click().then(function(itemText) {
+        cy.get("a[href$='contact']").click().then(function(itemText) {
             cy.log(`Button text is: ${itemText.text()}`)
         })
        

@@ -10,14 +10,15 @@
     "triggerAllTests-chrome": "npx cypress run --browser chrome",
     "triggerAllTests-dashboard": "npx cypress run --record --key fe682390-cb9c-4ef3-a51e-eb45e6620a69",
     "triggerAllTests-webdriveruni": "npx cypress run --spec cypress/integration/webdriver-uni/*",
-    "triggerAllTests-autoTestStore": "npx cypress run --spec cypress/integration/automation-test-store/* --headed",
+    "triggerAllTests-autoTestStore": "npx cypress run --spec cypress/integration/automation-test-store/*",
     "junit-merge": "npx junit-merge -d cypress/results/junit/ -o cypress/results/junit/results.xml",
     "delete-junit-report": "rm -rf cypress/results/junit/results.xml",
     "delete-results": "rm -rf cypress/results/* || true",
     "mochawesome-merge": "npx mochawesome-merge cypress/results/mochawesome/*.json > mochawesome.json && npx marge mochawesome.json",
     "delete-mochawesome-report": "rm -rf mochawesome-report/* || true",
     "cypress-regression-pack": "npm run delete-results && npm run delete-mochawesome-report && npm run triggerAllTests-headless && npm run mochawesome-merge",
-    "triggerAllTests-staging": "npx cypress run --config-file cypress/config/staging.json --headed"
+    "triggerAllTests-staging": "npx cypress run --config-file cypress/config/staging.json --headed",
+    "cypress-multi-browser": "npm run triggerAllTests-autoTestStore -- --browser electron --headed & npm run triggerAllTests-autoTestStore -- --browser edge --headed"
   },
   "author": "Łukasz Krzywicki",
   "license": "ISC",
