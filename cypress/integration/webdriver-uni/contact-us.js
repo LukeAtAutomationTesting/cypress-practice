@@ -52,22 +52,26 @@ describe("Test Contact Us form via WebdriverUni", () => {
         contactUs_PO.contactFormSubmission('first_name', data.last_name, data.email, "How are you doing?", '#contact_reply > h1', 'Thank You for your Message!')
     });
 
-    it("should not be able to submit a successful submission via contact us form as all fields are required", () => {
-        // NAJPROSTRZE PODEJŚCIE
-        // cy.get('[name="first_name"]').type(data.first_name);
-        // cy.get('[name="last_name"]').type(data.last_name);
-        // cy.get('textarea.feedback-input').type("How are you doing?")
-        // cy.get('[type="submit"]').click();
-        // cy.get('body').contains('Error: all fields are required');
+    it("should not be able to submit a successful submission via contact us form as all fields are required", {browser: 'firefox'}, () => {
+        // if (!Cypress.isBrowser('firefox')) {
 
-        // PODEJŚCIE Z ZADEKLAROWNIEM CUSTOMOWEJ METODY W commands.js
-        cy.webdriverUni_ContactForm_Submission(
-            data.first_name, 
-            data.last_name, 
-            " ", 
-            "How are you doing?", 
-            'body', 
-            'Error: Invalid email address'
-        );
+            // NAJPROSTRZE PODEJŚCIE
+            // cy.get('[name="first_name"]').type(data.first_name);
+            // cy.get('[name="last_name"]').type(data.last_name);
+            // cy.get('textarea.feedback-input').type("How are you doing?")
+            // cy.get('[type="submit"]').click();
+            // cy.get('body').contains('Error: all fields are required');
+
+            // PODEJŚCIE Z ZADEKLAROWNIEM CUSTOMOWEJ METODY W commands.js
+            cy.webdriverUni_ContactForm_Submission(
+                data.first_name, 
+                data.last_name, 
+                " ", 
+                "How are you doing?", 
+                'body', 
+                'Error: Invalid email address'
+            );
+            
+        // }
     });
 })
